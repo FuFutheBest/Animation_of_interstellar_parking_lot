@@ -1,5 +1,4 @@
 # Animation_of_interstellar_parking_lot
-
 ### Hierarchy Diagram
 
 ```mermaid
