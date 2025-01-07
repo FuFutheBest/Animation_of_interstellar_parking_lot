@@ -1,18 +1,18 @@
 # Animation_of_interstellar_parking_lot
+
 ### Hierarchy Diagram
 
 ```mermaid
 graph TB
     Figure --> Circle
+    Circle --> Semicircle
     Figure --> Rectangle
+    Rectangle --> Teleported
     Figure --> Triangle
-    Figure --> Semicircle
+    Triangle --> Right_Triangle
     Figure --> Trapezium
     Figure --> Line
-    Figure --> Group
-    Group --> Vehicle
-    Group --> Floor
-    Vehicle --> Teleported
+    Figure --> Vehicle
     Vehicle --> Car
     Vehicle --> UFO
     Vehicle --> SpaceCraft
