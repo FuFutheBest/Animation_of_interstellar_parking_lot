@@ -119,4 +119,11 @@ public:
   void draw() override;
 };
 
+class Line : public Figure {
+public:
+  explicit Line(Vec anchor = Vec{0.0f, 0.0f}, float angle = 0.0f,
+                float u_length = unit, mycolor color = {0.0f, 0.0f, 0.f});
+  ~Line() = default;
+  void draw() override;
+};
 #endif //__FIGURE_H__

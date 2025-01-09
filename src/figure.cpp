@@ -283,3 +283,25 @@ void Trapezium::draw() {
   glFlush();
 #endif
 }
+
+Line::Line(Vec anchor, float angle, float u_length, mycolor color) {
+  setAnchor(anchor);
+  setangle(angle);
+  setlen(u_length);
+  setcolor(color);
+}
+
+void Line::draw() {
+#ifndef HEADLESS
+  glBegin(GL_LINES);
+  glColor3f(this->getcolor().r, this->getcolor().g, this->getcolor().b);
+  glVertex2f(this->getAnchor().getX() + cosf(this->getangle()) * this->getlen(),
+             this->getAnchor().getY() +
+                 sinf(this->getangle()) * this->getlen());
+  glVertex2f(this->getAnchor().getX() - cosf(this->getangle()) * this->getlen(),
+             this->getAnchor().getY() -
+                 sinf(this->getangle()) * this->getlen());
+  glEnd();
+  glFlush();
+#endif
+}

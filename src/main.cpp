@@ -7,7 +7,7 @@ void TimeStep(int n) {
 }
 
 void gldraw() {
-  static Semicircle c1;
+  static Line c1;
   glClear(GL_COLOR_BUFFER_BIT);
   c1.draw();
 
