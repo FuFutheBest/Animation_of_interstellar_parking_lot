@@ -12,7 +12,6 @@ graph TB
     Triangle --> Right_Triangle
     Figure --> Trapezium
     Figure --> Line
-    Figure --> Vehicle
     Vehicle --> Car
     Vehicle --> UFO
     Vehicle --> SpaceCraft
