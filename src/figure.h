@@ -1,7 +1,6 @@
 #ifndef __FIGURE_H__
 #define __FIGURE_H__
 #include <GL/glut.h>
-
 #include <cmath>
 #define unit 0.5f
 

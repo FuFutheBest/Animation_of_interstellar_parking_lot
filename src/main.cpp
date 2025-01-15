@@ -1,5 +1,4 @@
-#include "figure.h"
-#include <iostream>
+#include "vehicle.h"
 
 void TimeStep(int n) {
   glutTimerFunc(static_cast<unsigned int>(n), TimeStep, n);
@@ -7,9 +6,11 @@ void TimeStep(int n) {
 }
 
 void gldraw() {
-  static Line c1;
+  static Car c1;
   glClear(GL_COLOR_BUFFER_BIT);
   c1.draw();
+  c1.setangle(static_cast<float>(M_PI / 6));
+  // BUG: setangle function not works
 
   glutSwapBuffers();
   glFlush();
