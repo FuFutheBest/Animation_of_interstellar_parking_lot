@@ -10,7 +10,6 @@ void gldraw() {
   glClear(GL_COLOR_BUFFER_BIT);
   c1.draw();
   c1.setangle(static_cast<float>(M_PI / 6));
-  // BUG: setangle function not works
 
   glutSwapBuffers();
   glFlush();

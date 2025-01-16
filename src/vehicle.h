@@ -14,6 +14,8 @@ protected:
   void addFigure(int rank, Figure *f);
   void setlen(float u_length);
 
+  virtual void reset() = 0;
+
 public:
   Vehicle(int figure_num = 1, Vec anchor = Vec{0.0f, 0.0f}, float angle = 0.0f,
           float u_length = unit);
@@ -22,6 +24,7 @@ public:
   void setangle(float a);
 
   Vec getAnchor();
+  Figure **getFigure();
   float getangle();
   float getlen();
 
@@ -31,6 +34,16 @@ public:
 class Car : public Vehicle {
 public:
   Car();
-  Car(Vec anchor, float angle);
+
+protected:
+  void reset() override;
+};
+
+class UFO : public Vehicle {
+public:
+  UFO();
+
+protected:
+  void reset() override;
 };
 #endif // __VEHICLE_H__

@@ -20,7 +20,10 @@ Vehicle::~Vehicle() {
 
 void Vehicle::setAnchor(Vec a) { this->anchor = a; }
 
-void Vehicle::setangle(float a) { this->angle = a; }
+void Vehicle::setangle(float a) {
+  this->angle = a;
+  reset();
+}
 
 void Vehicle::setlen(float u_length) { this->u_length = u_length; }
 
@@ -33,6 +36,8 @@ void Vehicle::addFigure(int rank, Figure *f) {
 }
 
 Vec Vehicle::getAnchor() { return this->anchor; }
+
+Figure **Vehicle::getFigure() { return this->body; }
 
 float Vehicle::getangle() { return this->angle; }
 
@@ -77,4 +82,41 @@ Car::Car() : Vehicle(4) {
       2, new Circle(A2, this->getangle(), this->getlen() / 5, get_color('o')));
   this->addFigure(
       3, new Circle(A3, this->getangle(), this->getlen() / 5, get_color('o')));
+}
+
+void Car::reset() {
+  float angle1 = static_cast<float>(M_PI / 10);
+  Vec A1 = this->getAnchor() +
+           (Vec(this->getAnchor().getX(),
+                2 * this->getlen() * sinf(static_cast<float>(angle1)))
+            << this->getangle());
+  Vec A2 = this->getAnchor() +
+           (Vec(this->getAnchor().getX() + this->getlen() / 3,
+                -(this->getlen() * sinf(static_cast<float>(angle1)) +
+                  (this->getlen() / 5)))
+            << this->getangle());
+  Vec A3 = this->getAnchor() +
+           (Vec(this->getAnchor().getX() - this->getlen() / 3,
+                -(this->getlen() * sinf(static_cast<float>(angle1)) +
+                  (this->getlen() / 5)))
+            << this->getangle());
+
+  /* reset Anchor */
+  this->getFigure()[0]->setAnchor(A1);
+  this->getFigure()[1]->setAnchor(this->getAnchor());
+  this->getFigure()[2]->setAnchor(A2);
+  this->getFigure()[3]->setAnchor(A3);
+
+  /* reset angle */
+  this->getFigure()[0]->setangle(this->getangle() +
+                                 static_cast<float>(M_PI / 2));
+  this->getFigure()[1]->setangle(this->getangle());
+  this->getFigure()[2]->setangle(this->getangle());
+  this->getFigure()[3]->setangle(this->getangle());
+
+  /* reset length */
+  this->getFigure()[0]->setlen(this->getlen());
+  this->getFigure()[1]->setlen(this->getlen());
+  this->getFigure()[2]->setlen(this->getlen() / 5);
+  this->getFigure()[3]->setlen(this->getlen() / 5);
 }

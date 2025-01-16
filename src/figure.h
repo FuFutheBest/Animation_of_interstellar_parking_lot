@@ -51,7 +51,7 @@ public:
   void rotate(float angle); // positive : counter-clockwise
   void zoom(float k);       //  k>1 : zoom in  ;  k<1 : zoom out
 
-  virtual ~Figure() {}
+  virtual ~Figure() = default;
 };
 
 class Circle : public Figure {
